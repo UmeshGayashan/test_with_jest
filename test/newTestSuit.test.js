@@ -12,3 +12,4 @@ test('toEqual',()=>{
 test('toEqual',()=>{
     expect(add(1,2)).toBeDefined()
 })
+
