@@ -1,4 +1,4 @@
-const {add} = require('../index')
+const {add,err} = require('../index')
 
 test('toBe',()=>{
     expect(add(1,2)).toBe(3)
@@ -30,4 +30,13 @@ test('toBeLessThan',()=>{
 // Failed One -- Check Again
 test('toBeCloseTo',()=>{
     expect(add(1.111111111,2.4444444444)).toBeCloseTo(3.6)
+})
+
+test('toMatch',()=>{
+    expect(add('Hello','World')).toMatch(/Hello/)
+})
+
+// Throw new error
+test('toThrow',()=>{
+    expect(()=> err()).toThrow('I am new Error')
 })
