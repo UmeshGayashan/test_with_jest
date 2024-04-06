@@ -49,3 +49,8 @@ describe('I am block',()=>{
         expect(()=>err()).toThrow('I am new Error')
     })
 })
+
+// Promise Testing
+test('toThrow',()=>{
+    expect(()=> err()).toThrow('I am new Error')
+})
