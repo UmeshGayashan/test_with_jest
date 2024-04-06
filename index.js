@@ -21,22 +21,35 @@ const arr = () =>{
 }
 
 
-const express = require('express')
-const app = express()
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-app.get('/users',(req,res)=>{
-    res.status(200).json({
-        users:[
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/users', (req, res) => {
+    try {
+        // Your logic to fetch users (this is just an example)
+        const users = [
             {
                 name: 'Umesh',
-                email:'umeshgayashan@gmail.com',
+                email: 'umeshgayashan@gmail.com',
                 password: 'Umesh@123'
             }
-        ]
-    })
-})
-app.listen(3000)
+        ];
+        res.status(200).json({ users });
+    } catch (error) {
+        console.error('Error fetching users:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+// app.listen(3000)
 
 
 module.exports = {
