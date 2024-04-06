@@ -1,4 +1,4 @@
-const {add,err} = require('../index')
+const {add,err,promiseTest,arr} = require('../index')
 
 test('toBe',()=>{
     expect(add(1,2)).toBe(3)
@@ -51,6 +51,24 @@ describe('I am block',()=>{
 })
 
 // Promise Testing
-test('toThrow',()=>{
-    expect(()=> err()).toThrow('I am new Error')
+test('promiseTest Old Way',()=>{
+    promiseTest(1,2)
+    .then(data =>{
+        expect(data).toBe('+ve')
+    })
+    .catch(e =>{
+        expect(e).toBe('-ve')
+    })
+})
+
+test('promiseTest Easy way',()=>{
+    expect(promiseTest(2,1)).resolves.toBe('+ve')    
+})
+
+test('promiseTest Easy way',()=>{
+    expect(promiseTest(1,2)).rejects.toBe('-ve')    
+})
+
+test('toContain',()=>{
+    expect(arr()).toContain('Bat')
 })

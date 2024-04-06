@@ -16,6 +16,10 @@ const promiseTest = (a,b) =>{
     })
 }
 
+const arr = () =>{
+    return ['Bat']
+}
+
 module.exports = {
-    add,err,promiseTest
+    add,err,promiseTest,arr
 }
