@@ -20,6 +20,25 @@ const arr = () =>{
     return ['Bat']
 }
 
+
+const express = require('express')
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.get('/users',(req,res)=>{
+    res.status(200).json({
+        users:[
+            {
+                name: 'Umesh',
+                email:'umeshgayashan@gmail.com',
+                password: 'Umesh@123'
+            }
+        ]
+    })
+})
+app.listen(3000)
+
+
 module.exports = {
-    add,err,promiseTest,arr
+    add,err,promiseTest,arr,app
 }
